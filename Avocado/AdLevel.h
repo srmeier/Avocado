@@ -32,6 +32,8 @@ public:
 	void Load(const char* pName);
 	void Unload(void);
 
+	void ProcessTrigger(AdEntity* pEnt);
+
 public:
 	AdLevel(void);
 	~AdLevel(void);

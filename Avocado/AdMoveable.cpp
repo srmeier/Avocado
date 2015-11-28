@@ -221,6 +221,8 @@ void AdMoveable::HandleMovement(class AdTiledManager* pMap) {
 
 //-----------------------------------------------------------------------------
 void AdMoveable::Update(AdLevel* pLvl) {
+	AdEntity::Update(pLvl); // NOTE: player entity will always be triggered
+
 	AdTiledManager* pMap;
 	pMap = pLvl->GetTiledMap();
 	

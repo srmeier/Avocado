@@ -125,6 +125,15 @@ void AdTiledManager::Load(const char* pName) {
 								duk_pop(ctx);
 								pEnt = new AdEntity();
 								pEnt->Load(ctx);
+							} else if(
+								!strcmp(type, "LVL-UP-0")    ||
+								!strcmp(type, "LVL-DOWN-0")  ||
+								!strcmp(type, "LVL-LEFT-0")  ||
+								!strcmp(type, "LVL-RIGHT-0")
+							) {
+								duk_pop(ctx);
+								pEnt = new AdEntity();
+								pEnt->Load(ctx);
 							} else {
 								duk_pop(ctx);
 							}

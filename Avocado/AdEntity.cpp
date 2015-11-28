@@ -53,6 +53,12 @@ void AdEntity::Update(AdLevel* pLvl) {
 		m_bTriggered = true;
 	else
 		m_bTriggered = false;
+
+	char tag[4] = "";
+	memcpy(tag, m_pType, 3);
+
+	if(m_bTriggered && !strcmp(tag, "LVL"))
+		pLvl->ProcessTrigger(this);
 }
 
 //-----------------------------------------------------------------------------

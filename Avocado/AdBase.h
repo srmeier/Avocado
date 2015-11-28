@@ -19,7 +19,7 @@
 #define LEFT_DIREC        2
 #define RIGHT_DIREC       3
 #define COLLISION_LAYER   2
-#define PLAYER_DRAW_LAYER 1
+#define PLAYER_DRAW_LAYER 0
 #define NAME_LENGTH       0xFF
 #define WINDOW_TITLE      "Prototype"
 #define MAP_LOCATION      "data/maps/%s.json"

@@ -43,10 +43,10 @@ int SDL_main(int argc, char* argv[]) {
 		lvl->Render();
 
 		SDL_Point pnt = {0, 0};
-		AdScreen::DrawSprite(pnt, text1);
+		//AdScreen::DrawSprite(pnt, text1);
 
 		pnt.y += 8;
-		AdScreen::DrawSprite(pnt, text2);
+		//AdScreen::DrawSprite(pnt, text2);
 		//
 
 		AdScreen::Present();

@@ -43,10 +43,10 @@ void AdLevel::Update(SDL_Event* sdlEvent) {
 	}
 
 	if(bReload && !bChkReload) {
-		char pName[NAME_LENGTH];
-		strcpy(pName, m_pFileName);
+		char pFileName[NAME_LENGTH];
+		strcpy(pFileName, m_pFileName);
 
-		Unload(); Load(pName);
+		Unload(); Load(pFileName);
 
 	} else if(!bReload) bChkReload = false;
 
@@ -174,4 +174,9 @@ void AdLevel::Unload(void) {
 	}
 
 	memset(m_pFileName, 0x00, NAME_LENGTH);
+}
+
+//-----------------------------------------------------------------------------
+void AdLevel::ProcessTrigger(AdEntity* pEnt) {
+	printf("processing event\n");
 }
