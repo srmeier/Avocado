@@ -1,0 +1,43 @@
+{ "height":6,
+ "layers":[
+        {
+         "data":[1189, 1190, 1191, 1192, 1193, 1194, 1253, 1254, 1255, 1256, 1257, 1258, 1317, 1318, 1319, 1320, 1321, 1322, 1381, 1382, 1383, 1384, 1385, 1386, 1445, 1446, 1447, 1448, 1449, 1450, 1509, 1510, 1511, 1512, 1513, 1514],
+         "height":6,
+         "name":"frame_0",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":6,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "renderorder":"right-down",
+ "tileheight":8,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/spritesheet.bmp",
+         "imageheight":1024,
+         "imagewidth":512,
+         "margin":0,
+         "name":"spritesheet",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tilecount":8192,
+         "tileheight":8,
+         "tilewidth":8,
+         "transparentcolor":"#ff00ff"
+        }],
+ "tilewidth":8,
+ "version":1,
+ "width":6
+}
