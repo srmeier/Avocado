@@ -43,29 +43,6 @@ AdMoveable::~AdMoveable(void) {
 //-----------------------------------------------------------------------------
 void AdMoveable::Load(duk_context* pCtx) {
 	AdEntity::Load(pCtx);
-	/*
-	Unload();
-
-	duk_get_prop_string(pCtx, -1, "type");
-	strcpy(m_pType, duk_get_string(pCtx, -1));
-	duk_pop(pCtx);
-
-	duk_get_prop_string(pCtx, -1, "x");
-	m_recTrigger.x = duk_to_int(pCtx, -1);
-	duk_pop(pCtx);
-
-	duk_get_prop_string(pCtx, -1, "y");
-	m_recTrigger.y = duk_to_int(pCtx, -1);
-	duk_pop(pCtx);
-
-	duk_get_prop_string(pCtx, -1, "width");
-	m_recTrigger.w = duk_to_int(pCtx, -1);
-	duk_pop(pCtx);
-
-	duk_get_prop_string(pCtx, -1, "height");
-	m_recTrigger.h = duk_to_int(pCtx, -1);
-	duk_pop(pCtx);
-	*/
 
 	// NOTE: load the animation frames
 	duk_get_prop_string(pCtx, -1, "properties");
@@ -244,8 +221,6 @@ void AdMoveable::HandleMovement(class AdTiledManager* pMap) {
 
 //-----------------------------------------------------------------------------
 void AdMoveable::Update(AdLevel* pLvl) {
-	AdEntity::Update(pLvl);
-	
 	AdTiledManager* pMap;
 	pMap = pLvl->GetTiledMap();
 	
@@ -254,11 +229,6 @@ void AdMoveable::Update(AdLevel* pLvl) {
 
 //-----------------------------------------------------------------------------
 void AdMoveable::Render(AdLevel* pLvl) {
-	int offset_x = AdBase::GetWidth()/2-48/2+pLvl->GetPlayer()->m_recTrigger.x;
-	int offset_y = AdBase::GetHeight()/2-48/2+pLvl->GetPlayer()->m_recTrigger.y;
-
 	SDL_Point pnt = {m_recTrigger.x, m_recTrigger.y};
 	AdScreen::DrawSprite(pnt, m_pFrames[m_iFrame]);
-
-	if(m_bTriggered) {}
 }

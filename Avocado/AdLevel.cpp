@@ -10,6 +10,11 @@
 AdLevel::AdLevel(void) {
 	m_pLayers = NULL;
 	memset(m_pFileName, 0x00, NAME_LENGTH);
+
+	m_iMouseX     = 0;
+	m_iMouseY     = 0;
+	m_bMouseLeft  = false;
+	m_bMouseRight = false;
 }
 
 //-----------------------------------------------------------------------------
@@ -51,27 +56,30 @@ void AdLevel::Update(SDL_Event* sdlEvent) {
 		if(!m_pPlayer->m_bDown)  m_pPlayer->m_bDownCheck  = false;
 		if(!m_pPlayer->m_bLeft)  m_pPlayer->m_bLeftCheck  = false;
 		if(!m_pPlayer->m_bRight) m_pPlayer->m_bRightCheck = false;
+	}
 
-		switch(sdlEvent->type) {
-			case SDL_MOUSEMOTION: {
-				m_pPlayer->m_iMouseX = sdlEvent->motion.x/AdBase::GetScale();
-				m_pPlayer->m_iMouseY = sdlEvent->motion.y/AdBase::GetScale();
-			} break;
+	switch(sdlEvent->type) {
+		case SDL_MOUSEMOTION: {
+			m_iMouseX = sdlEvent->motion.x/AdBase::GetScale();
+			m_iMouseY = sdlEvent->motion.y/AdBase::GetScale();
+		} break;
 
-			case SDL_MOUSEBUTTONDOWN: {
-				switch(sdlEvent->button.button) {
-					case SDL_BUTTON_LEFT:  m_pPlayer->m_bMouseLeft  = true; break;
-					case SDL_BUTTON_RIGHT: m_pPlayer->m_bMouseRight = true; break;
-				}
-			} break;
+		case SDL_MOUSEBUTTONDOWN: {
+			switch(sdlEvent->button.button) {
+				case SDL_BUTTON_LEFT:  m_bMouseLeft  = true; break;
+				case SDL_BUTTON_RIGHT: m_bMouseRight = true; break;
+			}
+		} break;
 
-			case SDL_MOUSEBUTTONUP: {
-				switch(sdlEvent->button.button) {
-					case SDL_BUTTON_LEFT:  m_pPlayer->m_bMouseLeft  = false; break;
-					case SDL_BUTTON_RIGHT: m_pPlayer->m_bMouseRight = false; break;
-				}
-			} break;
+		case SDL_MOUSEBUTTONUP: {
+			switch(sdlEvent->button.button) {
+				case SDL_BUTTON_LEFT:  m_bMouseLeft  = false; break;
+				case SDL_BUTTON_RIGHT: m_bMouseRight = false; break;
+			}
+		} break;
 
+		if(m_pPlayer != NULL) {
+			// NOTE: update the player's input
 			case SDL_KEYDOWN: {
 				switch(sdlEvent->key.keysym.sym) {
 					case SDLK_UP:    m_pPlayer->m_bUp    = true; break;
@@ -131,7 +139,7 @@ void AdLevel::Load(const char* pFileName) {
 		AdEntity* pEnt = m_objMap.GetEntity(e);
 
 		if(!strcmp(pEnt->GetType(), "NPC-PLAYER")) {
-			m_pPlayer = (AdPlayer*) pEnt;
+			m_pPlayer = (AdMoveable*) pEnt;
 		}
 	}
 

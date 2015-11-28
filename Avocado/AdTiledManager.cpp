@@ -1,7 +1,6 @@
 /*
 */
 
-#include "AdPlayer.h"
 #include "AdMoveable.h"
 #include "AdTiledManager.h"
 
@@ -116,7 +115,7 @@ void AdTiledManager::Load(const char* pName) {
 
 							if(!strcmp(type, "NPC-PLAYER")) {
 								duk_pop(ctx);
-								pEnt = new AdPlayer();
+								pEnt = new AdMoveable();
 								pEnt->Load(ctx);
 							} else if(!strcmp(type, "NPC-TEST")) {
 								duk_pop(ctx);

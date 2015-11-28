@@ -56,6 +56,4 @@ void AdEntity::Update(AdLevel* pLvl) {
 }
 
 //-----------------------------------------------------------------------------
-void AdEntity::Render(AdLevel* pLvl) {
-	if(m_bTriggered) {}
-}
+void AdEntity::Render(AdLevel* pLvl) {}
