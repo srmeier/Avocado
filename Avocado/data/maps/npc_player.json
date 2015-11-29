@@ -1,9 +1,20 @@
 { "height":2,
  "layers":[
         {
-         "data":[57, 57, 57, 57],
+         "data":[129, 130, 193, 194],
          "height":2,
          "name":"frame_0",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":false,
+         "width":2,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[131, 132, 195, 196],
+         "height":2,
+         "name":"frame_1",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,

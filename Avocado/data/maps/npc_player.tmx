@@ -5,8 +5,14 @@
  </tileset>
  <layer name="frame_0" width="2" height="2">
   <data encoding="csv">
-57,57,
-57,57
+129,130,
+193,194
+</data>
+ </layer>
+ <layer name="frame_1" width="2" height="2" visible="0">
+  <data encoding="csv">
+131,132,
+195,196
 </data>
  </layer>
 </map>

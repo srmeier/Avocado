@@ -11,6 +11,7 @@ friend class AdTiledManager;
 protected:
 	int            m_iFrame;
 	SDL_Surface**  m_pFrames;
+	int            m_iFrameCount;
 	AdTiledManager m_aniMap;
 
 public:
@@ -38,6 +39,8 @@ public:
 	bool     m_bLeftCheck;
 	bool     m_bRightCheck;
 
+	char     m_pSendTo[NAME_LENGTH];
+
 protected:
 	bool m_bTriggered;
 	char m_pType[NAME_LENGTH];
@@ -47,6 +50,7 @@ protected:
 
 public:
 	const char* GetType(void) {return m_pType;}
+	const bool  IsTriggered(void) {return m_bTriggered;}
 
 public:
 	virtual void Unload(void);
@@ -67,7 +71,7 @@ public:
 		int iW = 0, int iH = 0,
 		const char* pFileName = NULL
 	);
-	virtual ~AdEntity(void);
+	~AdEntity(void);
 };
 
 #endif

@@ -17,7 +17,7 @@
 #include "AdTiledManager.h"
 #include "AdSpriteManager.h"
 
-#include "AdEntity.h"
+#include "AdPlayer.h"
 
 //-----------------------------------------------------------------------------
 int SDL_main(int argc, char* argv[]) {
@@ -31,12 +31,8 @@ int SDL_main(int argc, char* argv[]) {
 	AdLevel* lvl = new AdLevel();
 	lvl->Load("testing");
 
-	AdEntity player(8*4, 8*15, 8*2, 8*2, "npc_player");
-
+	AdPlayer player;
 	lvl->SetPlayer(&player);
-
-	//lvl->Load("testing0");
-	//lvl->SetPlayer(&player);
 
 	SDL_Surface* text1 = AdSpriteManager::BuildSprite("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%");
 	SDL_Surface* text2 = AdSpriteManager::BuildSprite("~*()-+=[]\"'<>.?/");

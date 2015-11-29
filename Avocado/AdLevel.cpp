@@ -42,18 +42,10 @@ void AdLevel::Update(SDL_Event* sdlEvent) {
 	}
 
 	if(bReload && !bChkReload) {
-		/*
 		char pFileName[NAME_LENGTH];
 		strcpy(pFileName, m_pFileName);
 
 		Load(pFileName);
-		*/
-
-		// temp
-		AdEntity* pPlayer = m_pPlayer;
-		Load("testing0");
-		SetPlayer(pPlayer);
-		//
 
 	} else if(!bReload) bChkReload = false;
 
@@ -109,6 +101,45 @@ void AdLevel::Update(SDL_Event* sdlEvent) {
 	for(int e=0; e<m_objMap.nEntities(); ++e) {
 		AdEntity* pEnt = m_objMap.GetEntity(e);
 		pEnt->Update(this);
+
+		if(!pEnt->IsTriggered()) continue;
+
+		// NOTE: check for transition entities
+		if(strlen(pEnt->m_pSendTo) != 0) {
+			if(!strcmp(pEnt->GetType(), "LVL-UP-0")) {
+				AdPlayer* pPlayer = m_pPlayer;
+				Load(pEnt->m_pSendTo);
+
+				pPlayer->m_recTrigger.y += AdBase::GetHeight()-8*4;
+				SetPlayer(pPlayer);
+
+				return;
+			} else if(!strcmp(pEnt->GetType(), "LVL-DOWN-0")) {
+				AdPlayer* pPlayer = m_pPlayer;
+				Load(pEnt->m_pSendTo);
+
+				pPlayer->m_recTrigger.y -= AdBase::GetHeight()-8*4;
+				SetPlayer(pPlayer);
+
+				return;
+			} else if(!strcmp(pEnt->GetType(), "LVL-LEFT-0")) {
+				AdPlayer* pPlayer = m_pPlayer;
+				Load(pEnt->m_pSendTo);
+
+				pPlayer->m_recTrigger.x += AdBase::GetWidth()-8*4;
+				SetPlayer(pPlayer);
+
+				return;
+			} else if(!strcmp(pEnt->GetType(), "LVL-RIGHT-0")) {
+				AdPlayer* pPlayer = m_pPlayer;
+				Load(pEnt->m_pSendTo);
+
+				pPlayer->m_recTrigger.x -= AdBase::GetWidth()-8*4;
+				SetPlayer(pPlayer);
+
+				return;
+			}
+		}
 	}
 
 	if(m_pPlayer) m_pPlayer->Update(this);

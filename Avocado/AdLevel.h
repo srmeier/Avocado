@@ -2,7 +2,7 @@
 #define __ADLEVEL_H_
 
 #include "AdBase.h"
-#include "AdEntity.h"
+#include "AdPlayer.h"
 #include "AdTiledManager.h"
 
 //-----------------------------------------------------------------------------
@@ -10,9 +10,8 @@ class AdLevel {
 protected:
 	AdTiledManager m_objMap;
 	SDL_Surface**  m_pLayers;
-	AdEntity*      m_pPlayer;
+	AdPlayer*      m_pPlayer;
 	char           m_pFileName[NAME_LENGTH];
-	SDL_Cursor*    m_pCursorHandOpen;
 
 public:
 	int  m_iMouseX;
@@ -23,7 +22,7 @@ public:
 public:
 	AdEntity*       GetPlayer(void) {return m_pPlayer;}
 	AdTiledManager* GetTiledMap(void) {return &m_objMap;}
-	void            SetPlayer(AdEntity* pPlayer) {m_pPlayer = pPlayer;}
+	void            SetPlayer(AdPlayer* pPlayer) {m_pPlayer = pPlayer;}
 
 public:
 	void Update(SDL_Event* sdlEvent);

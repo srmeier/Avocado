@@ -14,6 +14,7 @@ AdEntity::AdEntity(
 ) {
 	m_bTriggered = false;
 	memset(m_pType, 0x00, NAME_LENGTH);
+	memset(m_pSendTo, 0x00, NAME_LENGTH);
 
 	m_recTrigger.x = iX;
 	m_recTrigger.y = iY;
@@ -22,6 +23,7 @@ AdEntity::AdEntity(
 
 	m_iFrame       = 0;
 	m_pFrames      = NULL;
+	m_iFrameCount  = 0;
 
 	m_iI           = 0;
 	m_iJ           = 0;
@@ -94,6 +96,8 @@ void AdEntity::Load(duk_context* pCtx) {
 
 	// NOTE: load the animation frames
 	if(duk_get_prop_string(pCtx, -1, "properties")) {
+
+		// NOTE: check for any SDL_Surface frames to be used with this entity
 		if(duk_get_prop_string(pCtx, -1, "frames")) {
 			m_aniMap.Load(duk_get_string(pCtx, -1));
 
@@ -110,6 +114,12 @@ void AdEntity::Load(duk_context* pCtx) {
 				}
 			}
 		} duk_pop(pCtx);
+
+		// NOTE: check if the entity has another level to send the player to
+		if(duk_get_prop_string(pCtx, -1, "sendto")) {
+			memcpy(m_pSendTo, duk_get_string(pCtx, -1), strlen(duk_get_string(pCtx, -1)));
+		} duk_pop(pCtx);
+
 	} duk_pop(pCtx);
 }
 
@@ -117,6 +127,7 @@ void AdEntity::Load(duk_context* pCtx) {
 void AdEntity::Unload(void) {
 	m_bTriggered = false;
 	memset(m_pType, 0x00, NAME_LENGTH);
+	memset(m_pSendTo, 0x00, NAME_LENGTH);
 	memset(&m_recTrigger, 0x00, sizeof(SDL_Rect));
 
 	for(int j=0; j<m_aniMap.nLayers(); ++j) {
