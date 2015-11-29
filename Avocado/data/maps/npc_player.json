@@ -11,13 +11,11 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1,
  "orientation":"orthogonal",
  "properties":
     {
 
     },
- "renderorder":"right-down",
  "tileheight":8,
  "tilesets":[
         {
@@ -32,7 +30,6 @@
 
             },
          "spacing":0,
-         "tilecount":8192,
          "tileheight":8,
          "tilewidth":8,
          "transparentcolor":"#ff00ff"

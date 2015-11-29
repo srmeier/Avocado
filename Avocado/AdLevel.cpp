@@ -3,7 +3,6 @@
 
 #include "AdLevel.h"
 #include "AdScreen.h"
-#include "AdEntity.h"
 #include "AdSpriteManager.h"
 
 //-----------------------------------------------------------------------------
@@ -43,10 +42,18 @@ void AdLevel::Update(SDL_Event* sdlEvent) {
 	}
 
 	if(bReload && !bChkReload) {
+		/*
 		char pFileName[NAME_LENGTH];
 		strcpy(pFileName, m_pFileName);
 
-		Unload(); Load(pFileName);
+		Load(pFileName);
+		*/
+
+		// temp
+		AdEntity* pPlayer = m_pPlayer;
+		Load("testing0");
+		SetPlayer(pPlayer);
+		//
 
 	} else if(!bReload) bChkReload = false;
 
@@ -78,32 +85,33 @@ void AdLevel::Update(SDL_Event* sdlEvent) {
 			}
 		} break;
 
-		if(m_pPlayer != NULL) {
-			// NOTE: update the player's input
-			case SDL_KEYDOWN: {
-				switch(sdlEvent->key.keysym.sym) {
-					case SDLK_UP:    m_pPlayer->m_bUp    = true; break;
-					case SDLK_DOWN:  m_pPlayer->m_bDown  = true; break;
-					case SDLK_LEFT:  m_pPlayer->m_bLeft  = true; break;
-					case SDLK_RIGHT: m_pPlayer->m_bRight = true; break;
-				}
-			} break;
+		case SDL_KEYDOWN: {
+			if(m_pPlayer == NULL) break;
+			switch(sdlEvent->key.keysym.sym) {
+				case SDLK_UP:    m_pPlayer->m_bUp    = true; break;
+				case SDLK_DOWN:  m_pPlayer->m_bDown  = true; break;
+				case SDLK_LEFT:  m_pPlayer->m_bLeft  = true; break;
+				case SDLK_RIGHT: m_pPlayer->m_bRight = true; break;
+			}
+		} break;
 
-			case SDL_KEYUP: {
-				switch(sdlEvent->key.keysym.sym) {
-					case SDLK_UP:    m_pPlayer->m_bUp    = false; break;
-					case SDLK_DOWN:  m_pPlayer->m_bDown  = false; break;
-					case SDLK_LEFT:  m_pPlayer->m_bLeft  = false; break;
-					case SDLK_RIGHT: m_pPlayer->m_bRight = false; break;
-				}
-			} break;
-		}
+		case SDL_KEYUP: {
+			if(m_pPlayer == NULL) break;
+			switch(sdlEvent->key.keysym.sym) {
+				case SDLK_UP:    m_pPlayer->m_bUp    = false; break;
+				case SDLK_DOWN:  m_pPlayer->m_bDown  = false; break;
+				case SDLK_LEFT:  m_pPlayer->m_bLeft  = false; break;
+				case SDLK_RIGHT: m_pPlayer->m_bRight = false; break;
+			}
+		} break;
 	}
 
 	for(int e=0; e<m_objMap.nEntities(); ++e) {
 		AdEntity* pEnt = m_objMap.GetEntity(e);
 		pEnt->Update(this);
 	}
+
+	if(m_pPlayer) m_pPlayer->Update(this);
 }
 
 //-----------------------------------------------------------------------------
@@ -117,11 +125,10 @@ void AdLevel::Render(void) {
 		if(j == PLAYER_DRAW_LAYER) {
 			// NOTE: render entities
 			for(int e=0; e<m_objMap.nEntities(); ++e) {
-				if(m_pPlayer == m_objMap.GetEntity(e)) continue;
 				m_objMap.GetEntity(e)->Render(this);
 			}
 
-			if(m_pPlayer != NULL) m_pPlayer->Render(this);
+			if(m_pPlayer) m_pPlayer->Render(this);
 		}
 	}
 }
@@ -137,10 +144,6 @@ void AdLevel::Load(const char* pFileName) {
 	// NOTE: get the moveable entity to follow with camera
 	for(int e=0; e<m_objMap.nEntities(); ++e) {
 		AdEntity* pEnt = m_objMap.GetEntity(e);
-
-		if(!strcmp(pEnt->GetType(), "NPC-PLAYER")) {
-			m_pPlayer = (AdMoveable*) pEnt;
-		}
 	}
 
 	// NOTE: create an SDL_Surface for each map layer
@@ -174,9 +177,4 @@ void AdLevel::Unload(void) {
 	}
 
 	memset(m_pFileName, 0x00, NAME_LENGTH);
-}
-
-//-----------------------------------------------------------------------------
-void AdLevel::ProcessTrigger(AdEntity* pEnt) {
-	printf("processing event\n");
 }

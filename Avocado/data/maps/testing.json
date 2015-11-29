@@ -38,19 +38,6 @@
          "name":"entities",
          "objects":[
                 {
-                 "height":16,
-                 "name":"",
-                 "properties":
-                    {
-                     "frames":"npc_player"
-                    },
-                 "type":"NPC-PLAYER",
-                 "visible":true,
-                 "width":16,
-                 "x":24,
-                 "y":112
-                }, 
-                {
                  "height":8,
                  "name":"",
                  "properties":
@@ -75,6 +62,19 @@
                  "width":8,
                  "x":312,
                  "y":152
+                }, 
+                {
+                 "height":80,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"LVL-LEFT-0",
+                 "visible":true,
+                 "width":8,
+                 "x":0,
+                 "y":88
                 }],
          "opacity":1,
          "type":"objectgroup",

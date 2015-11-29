@@ -1,7 +1,7 @@
 /*
 */
 
-#include "AdMoveable.h"
+#include "AdEntity.h"
 #include "AdTiledManager.h"
 
 //-----------------------------------------------------------------------------
@@ -113,13 +113,9 @@ void AdTiledManager::Load(const char* pName) {
 
 							AdEntity* pEnt = NULL;
 
-							if(!strcmp(type, "NPC-PLAYER")) {
+							if(!strcmp(type, "NPC-TEST")) {
 								duk_pop(ctx);
-								pEnt = new AdMoveable();
-								pEnt->Load(ctx);
-							} else if(!strcmp(type, "NPC-TEST")) {
-								duk_pop(ctx);
-								pEnt = new AdMoveable();
+								pEnt = new AdEntity();
 								pEnt->Load(ctx);
 							} else if(!strcmp(type, "TEST")) {
 								duk_pop(ctx);
@@ -173,9 +169,9 @@ void AdTiledManager::Unload(void) {
 		m_pIndices = NULL;
 	}
 
-	m_iWidth   = 0;
-	m_iHeight  = 0;
-	m_nLayers  = 0;
+	m_iWidth  = 0;
+	m_iHeight = 0;
+	m_nLayers = 0;
 
 	if(m_pEntities && m_nEntities>0) {
 		for(int e=0; e<m_nEntities; ++e) {

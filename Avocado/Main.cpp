@@ -2,7 +2,8 @@
 //-----------------------------------------------------------------------------
 // TODO
 //-----------------------------------------------------------------------------
-- 
+- for transitions and stuff I need a level manager (aka overworld)
+	this is needed so that memory don't swap for under the for-loops and stuff
 
 //-----------------------------------------------------------------------------
 // DESIGN DECISIONS
@@ -16,6 +17,8 @@
 #include "AdTiledManager.h"
 #include "AdSpriteManager.h"
 
+#include "AdEntity.h"
+
 //-----------------------------------------------------------------------------
 int SDL_main(int argc, char* argv[]) {
 	if(AdBase::Init(8*40, 8*30, 3) == false) {
@@ -27,6 +30,13 @@ int SDL_main(int argc, char* argv[]) {
 	// TESTING
 	AdLevel* lvl = new AdLevel();
 	lvl->Load("testing");
+
+	AdEntity player(8*4, 8*15, 8*2, 8*2, "npc_player");
+
+	lvl->SetPlayer(&player);
+
+	//lvl->Load("testing0");
+	//lvl->SetPlayer(&player);
 
 	SDL_Surface* text1 = AdSpriteManager::BuildSprite("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%");
 	SDL_Surface* text2 = AdSpriteManager::BuildSprite("~*()-+=[]\"'<>.?/");

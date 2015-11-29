@@ -149,7 +149,6 @@
     <ClInclude Include="AdBase.h" />
     <ClInclude Include="AdEntity.h" />
     <ClInclude Include="AdLevel.h" />
-    <ClInclude Include="AdMoveable.h" />
     <ClInclude Include="AdScreen.h" />
     <ClInclude Include="AdSpriteManager.h" />
     <ClInclude Include="AdTiledManager.h" />
@@ -160,7 +159,6 @@
     <ClCompile Include="AdBase.cpp" />
     <ClCompile Include="AdEntity.cpp" />
     <ClCompile Include="AdLevel.cpp" />
-    <ClCompile Include="AdMoveable.cpp" />
     <ClCompile Include="AdScreen.cpp" />
     <ClCompile Include="AdSpriteManager.cpp" />
     <ClCompile Include="AdTiledManager.cpp" />
