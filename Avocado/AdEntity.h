@@ -40,6 +40,7 @@ public:
 	bool     m_bRightCheck;
 
 	char     m_pSendTo[NAME_LENGTH];
+	int      m_iSendToOffset;
 
 protected:
 	bool m_bTriggered;

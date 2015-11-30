@@ -108,33 +108,41 @@ void AdLevel::Update(SDL_Event* sdlEvent) {
 		if(strlen(pEnt->m_pSendTo) != 0) {
 			if(!strcmp(pEnt->GetType(), "LVL-UP-0")) {
 				AdPlayer* pPlayer = m_pPlayer;
+				int sendto_offset = pEnt->m_iSendToOffset;
+
 				Load(pEnt->m_pSendTo);
 
-				pPlayer->m_recTrigger.y += AdBase::GetHeight()-8*4;
+				pPlayer->m_recTrigger.y += AdBase::GetHeight()-8*4 + sendto_offset;
 				SetPlayer(pPlayer);
 
 				return;
 			} else if(!strcmp(pEnt->GetType(), "LVL-DOWN-0")) {
 				AdPlayer* pPlayer = m_pPlayer;
+				int sendto_offset = pEnt->m_iSendToOffset;
+
 				Load(pEnt->m_pSendTo);
 
-				pPlayer->m_recTrigger.y -= AdBase::GetHeight()-8*4;
+				pPlayer->m_recTrigger.y -= AdBase::GetHeight()-8*4 + sendto_offset;
 				SetPlayer(pPlayer);
 
 				return;
 			} else if(!strcmp(pEnt->GetType(), "LVL-LEFT-0")) {
 				AdPlayer* pPlayer = m_pPlayer;
+				int sendto_offset = pEnt->m_iSendToOffset;
+
 				Load(pEnt->m_pSendTo);
 
-				pPlayer->m_recTrigger.x += AdBase::GetWidth()-8*4;
+				pPlayer->m_recTrigger.x += AdBase::GetWidth()-8*4 + sendto_offset;
 				SetPlayer(pPlayer);
 
 				return;
 			} else if(!strcmp(pEnt->GetType(), "LVL-RIGHT-0")) {
 				AdPlayer* pPlayer = m_pPlayer;
+				int sendto_offset = pEnt->m_iSendToOffset;
+
 				Load(pEnt->m_pSendTo);
 
-				pPlayer->m_recTrigger.x -= AdBase::GetWidth()-8*4;
+				pPlayer->m_recTrigger.x -= AdBase::GetWidth()-8*4 + sendto_offset;
 				SetPlayer(pPlayer);
 
 				return;

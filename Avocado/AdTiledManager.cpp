@@ -4,6 +4,8 @@
 #include "AdEntity.h"
 #include "AdTiledManager.h"
 
+#include "NpcTree0.h"
+
 //-----------------------------------------------------------------------------
 duk_context* AdTiledManager::s_pJSCtx;
 int          AdTiledManager::s_iInstances;
@@ -115,11 +117,7 @@ void AdTiledManager::Load(const char* pName) {
 
 							if(!strcmp(type, "NPC-TEST")) {
 								duk_pop(ctx);
-								pEnt = new AdEntity();
-								pEnt->Load(ctx);
-							} else if(!strcmp(type, "TEST")) {
-								duk_pop(ctx);
-								pEnt = new AdEntity();
+								pEnt = new NpcTree0();
 								pEnt->Load(ctx);
 							} else if(
 								!strcmp(type, "LVL-UP-0")    ||

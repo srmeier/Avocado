@@ -1,0 +1,19 @@
+#ifndef __NPCTREE0_H_
+#define __NPCTREE0_H_
+
+#include "AdEntity.h"
+
+//-----------------------------------------------------------------------------
+class NpcTree0: public AdEntity {
+protected:
+	bool m_bTriggerToggle;
+
+public:
+	void Update(class AdLevel* pLvl);
+
+public:
+	NpcTree0(void);
+	~NpcTree0(void);
+};
+
+#endif

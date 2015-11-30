@@ -2,8 +2,7 @@
 //-----------------------------------------------------------------------------
 // TODO
 //-----------------------------------------------------------------------------
-- for transitions and stuff I need a level manager (aka overworld)
-	this is needed so that memory don't swap for under the for-loops and stuff
+- 
 
 //-----------------------------------------------------------------------------
 // DESIGN DECISIONS

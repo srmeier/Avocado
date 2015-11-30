@@ -16,36 +16,38 @@ AdEntity::AdEntity(
 	memset(m_pType, 0x00, NAME_LENGTH);
 	memset(m_pSendTo, 0x00, NAME_LENGTH);
 
-	m_recTrigger.x = iX;
-	m_recTrigger.y = iY;
-	m_recTrigger.w = iW;
-	m_recTrigger.h = iH;
+	m_iSendToOffset = 0;
 
-	m_iFrame       = 0;
-	m_pFrames      = NULL;
-	m_iFrameCount  = 0;
+	m_recTrigger.x  = iX;
+	m_recTrigger.y  = iY;
+	m_recTrigger.w  = iW;
+	m_recTrigger.h  = iH;
 
-	m_iI           = 0;
-	m_iJ           = 0;
+	m_iFrame        = 0;
+	m_pFrames       = NULL;
+	m_iFrameCount   = 0;
 
-	m_iMoveframe   = 0;
-	m_iMovedirec   = 0;
+	m_iI            = 0;
+	m_iJ            = 0;
 
-	m_bMoving      = false;
-	m_bFreeToMove  = true;
+	m_iMoveframe    = 0;
+	m_iMovedirec    = 0;
 
-	m_iForcedirec  = 0;
-	m_bForceMove   = false;
+	m_bMoving       = false;
+	m_bFreeToMove   = true;
 
-	m_bUp          = false;
-	m_bDown        = false;
-	m_bLeft        = false;
-	m_bRight       = false;
+	m_iForcedirec   = 0;
+	m_bForceMove    = false;
 
-	m_bUpCheck     = false;
-	m_bDownCheck   = false;
-	m_bLeftCheck   = false;
-	m_bRightCheck  = false;
+	m_bUp           = false;
+	m_bDown         = false;
+	m_bLeft         = false;
+	m_bRight        = false;
+
+	m_bUpCheck      = false;
+	m_bDownCheck    = false;
+	m_bLeftCheck    = false;
+	m_bRightCheck   = false;
 
 	if(pFileName) {
 		m_aniMap.Load(pFileName);
@@ -120,6 +122,10 @@ void AdEntity::Load(duk_context* pCtx) {
 			memcpy(m_pSendTo, duk_get_string(pCtx, -1), strlen(duk_get_string(pCtx, -1)));
 		} duk_pop(pCtx);
 
+		if(duk_get_prop_string(pCtx, -1, "sendto_offset")) {
+			m_iSendToOffset = duk_to_int(pCtx, -1);
+		} duk_pop(pCtx);
+
 	} duk_pop(pCtx);
 }
 
@@ -129,6 +135,8 @@ void AdEntity::Unload(void) {
 	memset(m_pType, 0x00, NAME_LENGTH);
 	memset(m_pSendTo, 0x00, NAME_LENGTH);
 	memset(&m_recTrigger, 0x00, sizeof(SDL_Rect));
+
+	m_iSendToOffset = 0;
 
 	for(int j=0; j<m_aniMap.nLayers(); ++j) {
 		if(m_pFrames && m_pFrames[j]) {
