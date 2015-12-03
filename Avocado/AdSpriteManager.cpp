@@ -158,6 +158,7 @@ SDL_Surface* AdSpriteManager::BuildSprite(const char* pString) {
 			case '.' : iIndex = 0x36; break;
 			case '?' : iIndex = 0x37; break;
 			case '/' : iIndex = 0x38; break;
+			case '^' : iIndex = 0x3A; break;
 		}
 
 		rect.x = s_iSprWidth*i;

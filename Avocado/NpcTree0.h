@@ -5,11 +5,9 @@
 
 //-----------------------------------------------------------------------------
 class NpcTree0: public AdEntity {
-protected:
-	bool m_bTriggerToggle;
-
 public:
 	void Update(class AdLevel* pLvl);
+	void Render(class AdLevel* pLvl);
 
 public:
 	NpcTree0(void);
