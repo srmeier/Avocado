@@ -45,6 +45,9 @@
     <ClInclude Include="NpcTree0.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NpcJavals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -75,6 +78,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NpcTree0.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcJavals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

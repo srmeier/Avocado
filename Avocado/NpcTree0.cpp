@@ -48,7 +48,7 @@ void NpcTree0::Render(class AdLevel* pLvl) {
 
 
 		//>^.^< +^.^+ =^.^= ~^.^~
-		SDL_Surface* msg = AdSpriteManager::BuildSprite("WELCOME!");
+		SDL_Surface* msg = AdSpriteManager::BuildSprite("HELLO!:)");
 		pnt.x += 8; pnt.y += 8;
 		AdScreen::DrawSprite(pnt, msg);
 		SDL_FreeSurface(msg);
