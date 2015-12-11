@@ -19,6 +19,15 @@
 #include "AdPlayer.h"
 
 //-----------------------------------------------------------------------------
+#define MAX_PACKET 0xFF
+
+//-----------------------------------------------------------------------------
+#define WOOD_WAIT_TIME 5000
+
+//-----------------------------------------------------------------------------
+#define FLAG_WOOD_UPDATE 0x0010
+
+//-----------------------------------------------------------------------------
 int SDL_main(int argc, char* argv[]) {
 	if(AdBase::Init(8*40, 8*30, 3) == false) {
 		fprintf(stderr, "ERROR: Failed to initiate.\n");
@@ -56,6 +65,21 @@ int SDL_main(int argc, char* argv[]) {
 		system("pause");
 		exit(-1);
 	}
+
+
+
+	uint16_t flag = FLAG_WOOD_UPDATE;
+	uint8_t temp_data[MAX_PACKET];
+
+	int offset = 0;
+	memcpy(temp_data+offset, &flag, sizeof(uint16_t));
+	offset += sizeof(uint16_t);
+
+	int num_sent = SDLNet_TCP_Send(socket, temp_data, offset);
+
+	if(num_sent < offset) {
+		fprintf(stderr, "%s\n", SDLNet_GetError());
+	}
 	//
 
 	// TESTING
@@ -76,17 +100,39 @@ int SDL_main(int argc, char* argv[]) {
 		AdScreen::Clear();
 
 		// NETWORK TESTING
+		static uint32_t ms_timer = SDL_GetTicks();
+		if((SDL_GetTicks()-ms_timer) > WOOD_WAIT_TIME) {
+			ms_timer = SDL_GetTicks();
+
+			uint16_t flag = FLAG_WOOD_UPDATE;
+			uint8_t temp_data[MAX_PACKET];
+
+			int offset = 0;
+			memcpy(temp_data+offset, &flag, sizeof(uint16_t));
+			offset += sizeof(uint16_t);
+
+			int num_sent = SDLNet_TCP_Send(socket, temp_data, offset);
+
+			if(num_sent < offset) {
+				fprintf(stderr, "%s\n", SDLNet_GetError());
+			}
+		}
+
+
+
+
+
 		if(SDLNet_CheckSockets(socket_set, 0) == -1) {
 			fprintf(stderr, "%s\n", SDLNet_GetError());
 			system("pause");
 			exit(-1);
 		}
 
-		uint8_t length = 0;
+		int length = 0;
 		uint8_t* data = NULL;
 
 		if(SDLNet_SocketReady(socket)) {
-			uint8_t temp_data[0xFF] = {};
+			uint8_t temp_data[0xFF];
 			length = SDLNet_TCP_Recv(socket, temp_data, 0xFF);
 
 			if(length <= 0) {
@@ -106,12 +152,29 @@ int SDL_main(int argc, char* argv[]) {
 
 				data = (uint8_t*) malloc(length*sizeof(uint8_t));
 				memcpy(data, temp_data, length);
+
+				int offset = 0;
+				uint16_t flag = *(uint16_t*) &data[offset];
+				offset += sizeof(uint16_t);
+
+				uint8_t amt_wood;
+
+				switch(flag) {
+					case FLAG_WOOD_UPDATE: {
+						amt_wood = *(uint8_t*) &data[offset];
+						offset += sizeof(uint8_t);
+					} break;
+
+					default: {
+						printf("not processed.\n");
+					} break;
+				}
+
+				printf("amount of wood: %d\n", amt_wood);
+
+				free(data);
 			}
 		}
-
-
-
-		free(data);
 		//
 
 		// TESTING

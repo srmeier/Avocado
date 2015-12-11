@@ -1,4 +1,4 @@
-﻿Build started 12/10/2015 5:47:12 PM.
+﻿Build started 12/11/2015 12:07:03 PM.
      1>Project "C:\Users\srmeier\Documents\Visual Studio 2015\Projects\Avocado\Avocado\Avocado.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Users\srmeier\Documents\Visual Studio 2015\Projects\Avocado\include\\" /ZI /nologo /W3 /WX- /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
@@ -20,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.73
+Time Elapsed 00:00:00.45
