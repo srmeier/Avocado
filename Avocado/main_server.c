@@ -48,8 +48,8 @@ void CloseSocket(int index) {
 		exit(-1);
 	}
 
-	SDLNet_TCP_Close(sockets[index]);
 	memset(&clients[index], 0x00, sizeof(Client));
+	SDLNet_TCP_Close(sockets[index]);
 	sockets[index] = NULL;
 }
 
@@ -91,7 +91,7 @@ void SendData(int index, uint8_t* data, uint16_t length, uint16_t flag) {
 }
 
 //-----------------------------------------------------------------------------
-uint8_t* RecvData(int index, int* length, uint16_t* flag) {
+uint8_t* RecvData(int index, uint16_t* length, uint16_t* flag) {
 	uint8_t temp_data[MAX_PACKET];
 	int num_recv = SDLNet_TCP_Recv(sockets[index], temp_data, MAX_PACKET);
 
@@ -107,7 +107,6 @@ uint8_t* RecvData(int index, int* length, uint16_t* flag) {
 		return NULL;
 	} else {
 		int offset = 0;
-
 		*flag = *(uint16_t*) &temp_data[offset];
 		offset += sizeof(uint16_t);
 
@@ -193,6 +192,7 @@ int main(int argc, char** argv) {
 		} else {
 			int ind;
 			for(ind=0; (ind<MAX_SOCKETS) && num_rdy; ++ind) {
+				if(sockets[ind] == NULL) continue;
 				if(!SDLNet_SocketReady(sockets[ind])) continue;
 
 				if(ind == SERVER_SOCKET) {
@@ -201,15 +201,6 @@ int main(int argc, char** argv) {
 						num_rdy--;
 						continue;
 					}
-
-					// NOTE: send the amount of wood the player has when they connect
-					uint16_t length = 0;
-					uint8_t data[MAX_PACKET];
-
-					memcpy(data+length, &clients[next_ind].amt_wood, sizeof(uint8_t));
-					length += sizeof(uint8_t);
-
-					SendData(next_ind, data, length, FLAG_WOOD_UPDATE);
 
 					// NOTE: get a new index
 					int chk_count;
@@ -222,9 +213,11 @@ int main(int argc, char** argv) {
 
 					num_rdy--;
 				} else {
-					uint8_t* data; int length; uint16_t flag;
+					uint8_t* data;
+					uint16_t flag;
+					uint16_t length;
+					
 					data = RecvData(ind, &length, &flag);
-
 					if(data == NULL) {
 						num_rdy--;
 						continue;
@@ -232,13 +225,13 @@ int main(int argc, char** argv) {
 
 					switch(flag) {
 						case FLAG_WOOD_UPDATE: {
-							uint16_t send_length = 0;
+							uint16_t offset = 0;
 							uint8_t send_data[MAX_PACKET];
 
-							memcpy(send_data+send_length, &clients[ind].amt_wood, sizeof(uint8_t));
-							send_length += sizeof(uint8_t);
+							memcpy(send_data+offset, &clients[ind].amt_wood, sizeof(uint8_t));
+							offset += sizeof(uint8_t);
 
-							SendData(ind, send_data, send_length, FLAG_WOOD_UPDATE);
+							SendData(ind, send_data, offset, FLAG_WOOD_UPDATE);
 						} break;
 					}
 

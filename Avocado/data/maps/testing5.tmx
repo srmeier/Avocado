@@ -112,5 +112,6 @@
    </properties>
   </object>
   <object type="NPC-JAVALS" x="200" y="0" width="32" height="32"/>
+  <object type="NPC-GWEN" x="120" y="0" width="32" height="32"/>
  </objectgroup>
 </map>

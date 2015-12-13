@@ -48,6 +48,9 @@
     <ClInclude Include="NpcJavals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NpcGwen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -81,6 +84,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NpcJavals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcGwen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

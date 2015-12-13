@@ -4,6 +4,7 @@
 #include "AdEntity.h"
 #include "AdTiledManager.h"
 
+#include "NpcGwen.h"
 #include "NpcTree0.h"
 #include "NpcJavals.h"
 
@@ -123,6 +124,10 @@ void AdTiledManager::Load(const char* pName) {
 							} else if(!strcmp(type, "NPC-JAVALS")) {
 								duk_pop(ctx);
 								pEnt = new NpcJavals();
+								pEnt->Load(ctx);
+							} else if(!strcmp(type, "NPC-GWEN")) {
+								duk_pop(ctx);
+								pEnt = new NpcGwen();
 								pEnt->Load(ctx);
 							} else if(
 								!strcmp(type, "LVL-UP-0")    ||

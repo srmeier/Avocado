@@ -36,6 +36,7 @@ int SDL_main(int argc, char* argv[]) {
 	}
 
 	// NETWORK TESTING
+	/*
 	IPaddress ip;
 	TCPsocket socket;
 
@@ -80,6 +81,7 @@ int SDL_main(int argc, char* argv[]) {
 	if(num_sent < offset) {
 		fprintf(stderr, "%s\n", SDLNet_GetError());
 	}
+	*/
 	//
 
 	// TESTING
@@ -100,6 +102,7 @@ int SDL_main(int argc, char* argv[]) {
 		AdScreen::Clear();
 
 		// NETWORK TESTING
+		/*
 		static uint32_t ms_timer = SDL_GetTicks();
 		if((SDL_GetTicks()-ms_timer) > WOOD_WAIT_TIME) {
 			ms_timer = SDL_GetTicks();
@@ -117,10 +120,6 @@ int SDL_main(int argc, char* argv[]) {
 				fprintf(stderr, "%s\n", SDLNet_GetError());
 			}
 		}
-
-
-
-
 
 		if(SDLNet_CheckSockets(socket_set, 0) == -1) {
 			fprintf(stderr, "%s\n", SDLNet_GetError());
@@ -146,8 +145,8 @@ int SDL_main(int argc, char* argv[]) {
 				if(strlen(err) == 0) {
 					printf("DB: server disconnected\n");
 				} else fprintf(stderr, "%s\n", err);
-			} else {
 
+			} else {
 				printf("%d\n", length);
 
 				data = (uint8_t*) malloc(length*sizeof(uint8_t));
@@ -175,6 +174,7 @@ int SDL_main(int argc, char* argv[]) {
 				free(data);
 			}
 		}
+		*/
 		//
 
 		// TESTING
@@ -199,6 +199,7 @@ int SDL_main(int argc, char* argv[]) {
 	//
 
 	// NETWORK TESTING
+	/*
 	if(SDLNet_TCP_DelSocket(socket_set, socket) == -1) {
 		fprintf(stderr, "%s\n", SDLNet_GetError());
 		system("pause");
@@ -207,6 +208,7 @@ int SDL_main(int argc, char* argv[]) {
 
 	SDLNet_FreeSocketSet(socket_set);
 	SDLNet_TCP_Close(socket);
+	*/
 	//
 
 	AdBase::Quit();
