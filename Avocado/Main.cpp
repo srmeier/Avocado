@@ -25,6 +25,7 @@
 #define WOOD_WAIT_TIME 5000
 
 //-----------------------------------------------------------------------------
+#define FLAG_QUIT 0x0000
 #define FLAG_WOOD_UPDATE 0x0010
 
 //-----------------------------------------------------------------------------
@@ -67,8 +68,6 @@ int SDL_main(int argc, char* argv[]) {
 		exit(-1);
 	}
 
-
-
 	uint16_t flag = FLAG_WOOD_UPDATE;
 	uint8_t temp_data[MAX_PACKET];
 
@@ -77,7 +76,6 @@ int SDL_main(int argc, char* argv[]) {
 	offset += sizeof(uint16_t);
 
 	int num_sent = SDLNet_TCP_Send(socket, temp_data, offset);
-
 	if(num_sent < offset) {
 		fprintf(stderr, "%s\n", SDLNet_GetError());
 	}
@@ -86,7 +84,8 @@ int SDL_main(int argc, char* argv[]) {
 
 	// TESTING
 	AdLevel* lvl = new AdLevel();
-	lvl->Load("testing");
+	//lvl->Load("testing");
+	lvl->Load("testing5");
 
 	AdPlayer player;
 	lvl->SetPlayer(&player);
@@ -115,7 +114,6 @@ int SDL_main(int argc, char* argv[]) {
 			offset += sizeof(uint16_t);
 
 			int num_sent = SDLNet_TCP_Send(socket, temp_data, offset);
-
 			if(num_sent < offset) {
 				fprintf(stderr, "%s\n", SDLNet_GetError());
 			}
@@ -142,10 +140,10 @@ int SDL_main(int argc, char* argv[]) {
 
 				SDLNet_TCP_Close(socket);
 				const char* err = SDLNet_GetError();
-				if(strlen(err) == 0) {
+				if(strlen(err) == 0)
 					printf("DB: server disconnected\n");
-				} else fprintf(stderr, "%s\n", err);
-
+				else
+					fprintf(stderr, "%s\n", err);
 			} else {
 				printf("%d\n", length);
 
@@ -200,6 +198,18 @@ int SDL_main(int argc, char* argv[]) {
 
 	// NETWORK TESTING
 	/*
+	flag = FLAG_QUIT;
+	memset(temp_data, 0x00, MAX_PACKET);
+
+	offset = 0;
+	memcpy(temp_data+offset, &flag, sizeof(uint16_t));
+	offset += sizeof(uint16_t);
+
+	num_sent = SDLNet_TCP_Send(socket, temp_data, offset);
+	if(num_sent < offset) {
+		fprintf(stderr, "%s\n", SDLNet_GetError());
+	}
+
 	if(SDLNet_TCP_DelSocket(socket_set, socket) == -1) {
 		fprintf(stderr, "%s\n", SDLNet_GetError());
 		system("pause");

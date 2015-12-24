@@ -51,6 +51,9 @@
     <ClInclude Include="NpcGwen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NpcAvocado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -87,6 +90,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NpcGwen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcAvocado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

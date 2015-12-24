@@ -7,6 +7,7 @@
 #include "NpcGwen.h"
 #include "NpcTree0.h"
 #include "NpcJavals.h"
+#include "NpcAvocado.h"
 
 //-----------------------------------------------------------------------------
 duk_context* AdTiledManager::s_pJSCtx;
@@ -128,6 +129,10 @@ void AdTiledManager::Load(const char* pName) {
 							} else if(!strcmp(type, "NPC-GWEN")) {
 								duk_pop(ctx);
 								pEnt = new NpcGwen();
+								pEnt->Load(ctx);
+							} else if(!strcmp(type, "NPC-AVOCADO")) {
+								duk_pop(ctx);
+								pEnt = new NpcAvocado();
 								pEnt->Load(ctx);
 							} else if(
 								!strcmp(type, "LVL-UP-0")    ||
