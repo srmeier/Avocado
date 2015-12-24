@@ -84,8 +84,7 @@ int SDL_main(int argc, char* argv[]) {
 
 	// TESTING
 	AdLevel* lvl = new AdLevel();
-	//lvl->Load("testing");
-	lvl->Load("testing5");
+	lvl->Load("testing");
 
 	AdPlayer player;
 	lvl->SetPlayer(&player);

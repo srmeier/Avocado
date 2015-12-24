@@ -54,6 +54,9 @@
     <ClInclude Include="NpcAvocado.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NpcPuzzlePiece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -93,6 +96,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NpcAvocado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcPuzzlePiece.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

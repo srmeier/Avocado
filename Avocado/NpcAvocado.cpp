@@ -2,6 +2,8 @@
 */
 
 #include "AdBase.h"
+#include "AdLevel.h"
+#include "AdPlayer.h"
 #include "AdScreen.h"
 #include "NpcAvocado.h"
 #include "AdSpriteManager.h"
@@ -28,12 +30,21 @@ void NpcAvocado::Render(class AdLevel* pLvl) {
 		AdScreen::DrawSprite(pnt, bkg);
 		SDL_FreeSurface(bkg);
 
-
 		//>^.^< +^.^+ =^.^= ~^.^~
-		SDL_Surface* msg = AdSpriteManager::BuildSprite("AVOCADO JESUS: ");
-		SDL_Surface* msg0 = AdSpriteManager::BuildSprite("");
-		SDL_Surface* msg1 = AdSpriteManager::BuildSprite("");
-		SDL_Surface* msg2 = AdSpriteManager::BuildSprite("");
+		SDL_Surface *msg, *msg0, *msg1, *msg2;
+		AdPlayer* pPlayer = pLvl->GetPlayer();
+
+		if(pPlayer->hasPuzzlePiece) {
+			msg = AdSpriteManager::BuildSprite("AVOCADO JESUS: THANK YOU FOR FINDING");
+			msg0 = AdSpriteManager::BuildSprite("THE PUZZLE PIECE!");
+			msg1 = AdSpriteManager::BuildSprite("");
+			msg2 = AdSpriteManager::BuildSprite("");
+		} else {
+			msg = AdSpriteManager::BuildSprite("AVOCADO JESUS: GREETINGS! WE ARE");
+			msg0 = AdSpriteManager::BuildSprite("MISSING OUR PUZZLE PIECE AND WE NEED");
+			msg1 = AdSpriteManager::BuildSprite("YOU TO HELP FIND IT!");
+			msg2 = AdSpriteManager::BuildSprite("");
+		}
 
 		pnt.x += 8; pnt.y += 8;
 		AdScreen::DrawSprite(pnt, msg);

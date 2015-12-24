@@ -1,0 +1,51 @@
+{ "height":5,
+ "layers":[
+        {
+         "data":[172, 173, 174, 175, 176, 236, 237, 238, 239, 240, 300, 301, 302, 303, 304, 364, 365, 366, 367, 368, 428, 429, 430, 431, 432],
+         "height":5,
+         "name":"frame_0",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":5,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[177, 178, 179, 180, 181, 241, 242, 243, 244, 245, 305, 306, 307, 308, 309, 369, 370, 371, 372, 373, 433, 434, 435, 436, 437],
+         "height":5,
+         "name":"frame_1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":5,
+         "x":0,
+         "y":0
+        }],
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "tileheight":8,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/spritesheet.bmp",
+         "imageheight":1024,
+         "imagewidth":512,
+         "margin":0,
+         "name":"spritesheet",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":8,
+         "tilewidth":8,
+         "transparentcolor":"#ff00ff"
+        }],
+ "tilewidth":8,
+ "version":1,
+ "width":5
+}

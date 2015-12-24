@@ -4,7 +4,9 @@
 #include "AdPlayer.h"
 
 //-----------------------------------------------------------------------------
-AdPlayer::AdPlayer(void): AdEntity(8*4, 8*15, 8*2, 8*2, "npc_player") {}
+AdPlayer::AdPlayer(void): AdEntity(8*4, 8*15, 8*2, 8*2, "npc_player") {
+	hasPuzzlePiece = false;
+}
 
 //-----------------------------------------------------------------------------
 AdPlayer::~AdPlayer(void) {}

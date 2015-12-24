@@ -6,6 +6,9 @@
 //-----------------------------------------------------------------------------
 class AdPlayer: public AdEntity {
 public:
+	bool hasPuzzlePiece;
+
+public:
 	void Update(class AdLevel* pLvl);
 
 public:

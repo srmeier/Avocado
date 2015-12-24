@@ -20,7 +20,7 @@ public:
 	bool m_bMouseRight;
 
 public:
-	AdEntity*       GetPlayer(void) {return m_pPlayer;}
+	AdPlayer*       GetPlayer(void) {return m_pPlayer;}
 	AdTiledManager* GetTiledMap(void) {return &m_objMap;}
 	void            SetPlayer(AdPlayer* pPlayer) {m_pPlayer = pPlayer;}
 
