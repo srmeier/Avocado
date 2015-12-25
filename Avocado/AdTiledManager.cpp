@@ -4,11 +4,15 @@
 #include "AdEntity.h"
 #include "AdTiledManager.h"
 
+#include "NpcRon.h"
 #include "NpcGwen.h"
 #include "NpcTree0.h"
+#include "NpcPython.h"
 #include "NpcJavals.h"
+#include "NpcBurrito.h"
 #include "NpcAvocado.h"
 #include "NpcPuzzlePiece.h"
+#include "NpcPuzzlePiece2.h"
 
 //-----------------------------------------------------------------------------
 duk_context* AdTiledManager::s_pJSCtx;
@@ -123,6 +127,18 @@ void AdTiledManager::Load(const char* pName) {
 								duk_pop(ctx);
 								pEnt = new NpcTree0();
 								pEnt->Load(ctx);
+							} else if(!strcmp(type, "NPC-RON")) {
+								duk_pop(ctx);
+								pEnt = new NpcRon();
+								pEnt->Load(ctx);
+							} else if(!strcmp(type, "NPC-PYTHON")) {
+								duk_pop(ctx);
+								pEnt = new NpcPython();
+								pEnt->Load(ctx);
+							} else if(!strcmp(type, "NPC-BURRITO")) {
+								duk_pop(ctx);
+								pEnt = new NpcBurrito();
+								pEnt->Load(ctx);
 							} else if(!strcmp(type, "NPC-JAVALS")) {
 								duk_pop(ctx);
 								pEnt = new NpcJavals();
@@ -138,6 +154,10 @@ void AdTiledManager::Load(const char* pName) {
 							} else if(!strcmp(type, "NPC-PUZZLE_PIECE")) {
 								duk_pop(ctx);
 								pEnt = new NpcPuzzlePiece();
+								pEnt->Load(ctx);
+							} else if(!strcmp(type, "NPC-PUZZLE_PIECE2")) {
+								duk_pop(ctx);
+								pEnt = new NpcPuzzlePiece2();
 								pEnt->Load(ctx);
 							} else if(
 								!strcmp(type, "LVL-UP-0")    ||

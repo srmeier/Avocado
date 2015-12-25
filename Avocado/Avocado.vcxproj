@@ -156,9 +156,13 @@
     <ClInclude Include="DukConfig.h" />
     <ClInclude Include="Duktape.h" />
     <ClInclude Include="NpcAvocado.h" />
+    <ClInclude Include="NpcBurrito.h" />
     <ClInclude Include="NpcGwen.h" />
     <ClInclude Include="NpcJavals.h" />
     <ClInclude Include="NpcPuzzlePiece.h" />
+    <ClInclude Include="NpcPuzzlePiece2.h" />
+    <ClInclude Include="NpcPython.h" />
+    <ClInclude Include="NpcRon.h" />
     <ClInclude Include="NpcTree0.h" />
   </ItemGroup>
   <ItemGroup>
@@ -172,9 +176,13 @@
     <ClCompile Include="Duktape.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NpcAvocado.cpp" />
+    <ClCompile Include="NpcBurrito.cpp" />
     <ClCompile Include="NpcGwen.cpp" />
     <ClCompile Include="NpcJavals.cpp" />
     <ClCompile Include="NpcPuzzlePiece.cpp" />
+    <ClCompile Include="NpcPuzzlePiece2.cpp" />
+    <ClCompile Include="NpcPython.cpp" />
+    <ClCompile Include="NpcRon.cpp" />
     <ClCompile Include="NpcTree0.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
