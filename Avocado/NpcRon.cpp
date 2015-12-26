@@ -30,10 +30,10 @@ void NpcRon::Render(class AdLevel* pLvl) {
 
 
 		//>^.^< +^.^+ =^.^= ~^.^~
-		SDL_Surface* msg = AdSpriteManager::BuildSprite("RON: ");
-		SDL_Surface* msg0 = AdSpriteManager::BuildSprite("");
-		SDL_Surface* msg1 = AdSpriteManager::BuildSprite("");
-		SDL_Surface* msg2 = AdSpriteManager::BuildSprite("");
+		SDL_Surface* msg = AdSpriteManager::BuildSprite("RON: THIS CITTIE STOLE THE ANCIENT");
+		SDL_Surface* msg0 = AdSpriteManager::BuildSprite("PUZZLE PIECE. THIS ACTION STARTED THE");
+		SDL_Surface* msg1 = AdSpriteManager::BuildSprite("CURRENT WAR BETWEEN AVOCADO JESUS AND");
+		SDL_Surface* msg2 = AdSpriteManager::BuildSprite("THE VAMPIRE BURRITO.");
 
 		pnt.x += 8; pnt.y += 8;
 		AdScreen::DrawSprite(pnt, msg);

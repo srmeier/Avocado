@@ -30,10 +30,10 @@ void NpcPython::Render(class AdLevel* pLvl) {
 
 
 		//>^.^< +^.^+ =^.^= ~^.^~
-		SDL_Surface* msg = AdSpriteManager::BuildSprite("PYTHON: ");
-		SDL_Surface* msg0 = AdSpriteManager::BuildSprite("");
-		SDL_Surface* msg1 = AdSpriteManager::BuildSprite("");
-		SDL_Surface* msg2 = AdSpriteManager::BuildSprite("");
+		SDL_Surface* msg = AdSpriteManager::BuildSprite("PYTHON: THIS MAJESTIC BEAST ONCE RULED");
+		SDL_Surface* msg0 = AdSpriteManager::BuildSprite("OVER ALL COOKIE PRODUCTION IN THE LAND!");
+		SDL_Surface* msg1 = AdSpriteManager::BuildSprite("HIS RUTHLESSNESS LEFT MANY ACROSS THE");
+		SDL_Surface* msg2 = AdSpriteManager::BuildSprite("LAND TO STARVE.");
 
 		pnt.x += 8; pnt.y += 8;
 		AdScreen::DrawSprite(pnt, msg);

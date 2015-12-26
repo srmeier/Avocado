@@ -32,7 +32,7 @@ void NpcGwen::Render(class AdLevel* pLvl) {
 		//>^.^< +^.^+ =^.^= ~^.^~
 		SDL_Surface* msg = AdSpriteManager::BuildSprite("GWEN: THIS ANCIENT CITTIE WAS ONCE");
 		SDL_Surface* msg0 = AdSpriteManager::BuildSprite("THE ULTIMATE NINJA. SHE USED HER");
-		SDL_Surface* msg1 = AdSpriteManager::BuildSprite("AWESOMENESS TO SAVE ALL OF MANDKIND.");
+		SDL_Surface* msg1 = AdSpriteManager::BuildSprite("AWESOMENESS TO SAVE ALL OF CITTIEKIND.");
 		SDL_Surface* msg2 = AdSpriteManager::BuildSprite("");
 
 		pnt.x += 8; pnt.y += 8;

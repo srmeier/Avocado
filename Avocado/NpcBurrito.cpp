@@ -34,15 +34,17 @@ void NpcBurrito::Render(class AdLevel* pLvl) {
 		SDL_Surface *msg, *msg0, *msg1, *msg2;
 		AdPlayer* pPlayer = pLvl->GetPlayer();
 
+		pPlayer->hasTalkedWithBurrito = true;
+
 		if(pPlayer->hasPuzzlePiece) {
-			msg = AdSpriteManager::BuildSprite("VAMPIRE BURRITO: ");
-			msg0 = AdSpriteManager::BuildSprite("");
+			msg = AdSpriteManager::BuildSprite("VAMPIRE BURRITO: HOW IN THE WORLD DID");
+			msg0 = AdSpriteManager::BuildSprite("YOU TAKE OUR PUZZLE PIECE?!?");
 			msg1 = AdSpriteManager::BuildSprite("");
 			msg2 = AdSpriteManager::BuildSprite("");
 		} else {
-			msg = AdSpriteManager::BuildSprite("VAMPIRE BURRITO: ");
-			msg0 = AdSpriteManager::BuildSprite("");
-			msg1 = AdSpriteManager::BuildSprite("");
+			msg = AdSpriteManager::BuildSprite("VAMPIRE BURRITO: THE PUZZLE PIECE IS");
+			msg0 = AdSpriteManager::BuildSprite("OURS!! YOU WILL NEVER TAKE IT!!");
+			msg1 = AdSpriteManager::BuildSprite("MUHAHAHA!!");
 			msg2 = AdSpriteManager::BuildSprite("");
 		}
 

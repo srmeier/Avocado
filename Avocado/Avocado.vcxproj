@@ -163,6 +163,7 @@
     <ClInclude Include="NpcPuzzlePiece2.h" />
     <ClInclude Include="NpcPython.h" />
     <ClInclude Include="NpcRon.h" />
+    <ClInclude Include="NpcStatueBase.h" />
     <ClInclude Include="NpcTree0.h" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,7 @@
     <ClCompile Include="NpcPuzzlePiece2.cpp" />
     <ClCompile Include="NpcPython.cpp" />
     <ClCompile Include="NpcRon.cpp" />
+    <ClCompile Include="NpcStatueBase.cpp" />
     <ClCompile Include="NpcTree0.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -11,6 +11,7 @@
 #include "NpcJavals.h"
 #include "NpcBurrito.h"
 #include "NpcAvocado.h"
+#include "NpcStatueBase.h"
 #include "NpcPuzzlePiece.h"
 #include "NpcPuzzlePiece2.h"
 
@@ -158,6 +159,10 @@ void AdTiledManager::Load(const char* pName) {
 							} else if(!strcmp(type, "NPC-PUZZLE_PIECE2")) {
 								duk_pop(ctx);
 								pEnt = new NpcPuzzlePiece2();
+								pEnt->Load(ctx);
+							} else if(!strcmp(type, "NPC-STATUE_BASE")) {
+								duk_pop(ctx);
+								pEnt = new NpcStatueBase();
 								pEnt->Load(ctx);
 							} else if(
 								!strcmp(type, "LVL-UP-0")    ||

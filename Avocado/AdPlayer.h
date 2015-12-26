@@ -7,6 +7,7 @@
 class AdPlayer: public AdEntity {
 public:
 	bool hasPuzzlePiece;
+	bool hasTalkedWithBurrito;
 
 public:
 	void Update(class AdLevel* pLvl);
